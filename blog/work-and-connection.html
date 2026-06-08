@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work and Connection — Patch Blog</title>
+  <meta name="description" content="When people feel connected — to their teammates, to the mission, and to the organization — they're more engaged, more creative, and more resilient." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #EDE6D6;
+      --card:       #F8F3E8;
+      --accent:     #B85C2C;
+      --primary:    #1E1208;
+      --secondary:  #6B5238;
+      --muted:      #A08860;
+      --green:      #4A7A3C;
+      --sage:       #7A9C50;
+      --near-black: #1A0E05;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--primary);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid rgba(74,122,60,0.15);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .nav-logo-emoji { font-size: 22px; }
+    .nav-logo-text { font-family: Georgia, serif; font-size: 20px; color: var(--primary); letter-spacing: -0.3px; }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-blog-link { font-size: 14px; font-weight: 500; color: var(--secondary); text-decoration: none; transition: color 0.2s; }
+    .nav-blog-link:hover { color: var(--primary); }
+    .nav-cta { background: var(--accent); color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 9px 20px; border-radius: 100px; transition: opacity 0.2s; }
+    .nav-cta:hover { opacity: 0.85; }
+
+    .article-wrap { max-width: 680px; margin: 0 auto; padding: 64px 24px 96px; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); text-decoration: none; margin-bottom: 40px; transition: color 0.2s; }
+    .back-link:hover { color: var(--secondary); }
+    .article-tag { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--green); background: rgba(74,122,60,0.1); padding: 3px 10px; border-radius: 100px; margin-bottom: 20px; }
+    .article-title { font-family: Georgia, serif; font-size: clamp(30px, 5vw, 44px); line-height: 1.2; color: var(--primary); letter-spacing: -0.3px; margin-bottom: 16px; }
+    .article-title em { font-style: italic; color: var(--accent); }
+    .article-meta { font-size: 13px; color: var(--muted); display: flex; gap: 12px; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(160,136,96,0.2); }
+    .article-body { font-size: 17px; line-height: 1.8; color: var(--secondary); }
+    .article-body p { margin-bottom: 24px; }
+    .article-body p:last-child { margin-bottom: 0; }
+    .article-body ul { margin: 0 0 24px 0; padding: 0; list-style: none; }
+    .article-body ul li { padding: 10px 16px 10px 20px; position: relative; color: var(--primary); font-family: Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.5; }
+    .article-body ul li::before { content: ''; position: absolute; left: 0; top: 18px; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
+    .article-body blockquote { background: var(--card); border-left: 4px solid var(--green); border-radius: 0 12px 12px 0; padding: 24px 28px; margin: 32px 0; font-family: Georgia, serif; font-size: 19px; font-style: italic; line-height: 1.6; color: var(--primary); }
+    .article-cta { background: var(--card); border-radius: 20px; border-top: 3px solid var(--green); padding: 36px 32px; margin-top: 56px; text-align: center; }
+    .article-cta span { display: block; font-size: 32px; margin-bottom: 16px; }
+    .article-cta h3 { font-family: Georgia, serif; font-size: 22px; color: var(--primary); margin-bottom: 10px; }
+    .article-cta p { font-size: 15px; color: var(--secondary); line-height: 1.65; margin-bottom: 24px; }
+    .btn-primary { background: var(--accent); color: #fff; text-decoration: none; font-size: 15px; font-weight: 600; padding: 14px 28px; border-radius: 100px; display: inline-flex; align-items: center; gap: 8px; transition: opacity 0.2s, transform 0.15s; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    footer { background: var(--near-black); color: rgba(255,255,255,0.5); padding: 40px 24px; }
+    .footer-inner { max-width: 1040px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: Georgia, serif; font-size: 18px; color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 8px; }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.8); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); text-align: center; width: 100%; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-emoji">🐰</span>
+      <span class="nav-logo-text">Patch</span>
+    </a>
+    <div class="nav-right">
+      <a href="index.html" class="nav-blog-link">Blog</a>
+      <a href="https://apps.apple.com/us/app/patch-friends-check-in/id6765969272" class="nav-cta">Download</a>
+    </div>
+  </nav>
+
+  <div class="article-wrap">
+    <a href="index.html" class="back-link">← Back to Blog</a>
+
+    <span class="article-tag">Workplace</span>
+    <h1 class="article-title">Work and Connection: Why Relationships Are the <em>Heart of Productive Workplaces</em></h1>
+    <div class="article-meta">
+      <span>May 2026</span>
+      <span>·</span>
+      <span>4 min read</span>
+    </div>
+
+    <div class="article-body">
+      <p>Work is more than tasks, timelines, and KPIs. At its best, work is a shared human endeavor built on trust, clear communication, and a sense of belonging. When people feel connected — to their teammates, to the mission, and to the organization — they're more engaged, more creative, and more resilient. That connection is no longer a nice-to-have. It's a business imperative.</p>
+
+      <blockquote>The strongest teams aren't built on process alone. They're built on relationships.</blockquote>
+
+      <p>Research consistently shows that workplace connection drives measurable outcomes:</p>
+
+      <ul>
+        <li>Engagement and retention: employees who feel socially connected are more likely to stay and invest discretionary effort.</li>
+        <li>Collaboration and innovation: strong interpersonal ties make it easier to share ideas, give candid feedback, and move quickly.</li>
+        <li>Well-being and resilience: social support buffers stress, reduces burnout risk, and helps teams adapt through change.</li>
+        <li>Everyday efficiency: trusted informal channels save time compared to formal processes for simple problem-solving.</li>
+      </ul>
+
+      <p>Organizations that intentionally design experiences for connection reap outsized benefits. That means creating reliable pathways for people to meet, learn, and collaborate — not leaving it to chance.</p>
+
+      <p>A useful first step is a system that helps colleagues discover who to contact for specific problems or opportunities. Rather than waiting for chance encounters, people should be able to find peers with the right expertise or shared interests. Connections become more valuable when they come with context — what someone works on, recent projects, preferred collaboration style. Context reduces friction and speeds trust-building.</p>
+
+      <p>Async tools, short check-ins, and structured peer interactions — mentoring circles, interest groups, cross-team projects — keep ties strong without overloading calendars. And tracking outcomes tied to connection (onboarding speed, cross-team velocity, employee NPS) ensures these social initiatives actually drive business value.</p>
+
+      <p>Work is fundamentally social. Tools and processes matter, but they're most effective when designed to promote real human connection. The gap between intent and execution is where most organizations struggle — and where intentional connection-building makes the biggest difference.</p>
+
+      <p>This Memorial Day weekend, as teams step away from their desks and spend time with the people who matter most, it's worth reflecting on the relationships that make work meaningful too. The colleagues who check in, the managers who notice, the teams that celebrate together — these are the connections that keep people engaged long after the holiday ends.</p>
+    </div>
+
+    <div class="article-cta">
+      <span>🐰</span>
+      <h3>Stay close to the people you care about.</h3>
+      <p>Patch is a private, gentle way to share how you're really doing — and know how your people are doing too.</p>
+      <a href="https://apps.apple.com/us/app/patch-friends-check-in/id6765969272" class="btn-primary">
+        Download Patch
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span>🐰</span>
+        <span>Patch</span>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#partners">Partners</a>
+        <a href="../index.html#resources">Resources</a>
+        <a href="index.html">Blog</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="mailto:will@yourpatchapp.com">Contact</a>
+      </div>
+      <p class="footer-copy">© 2026 BlinkTech LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
